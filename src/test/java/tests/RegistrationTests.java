@@ -16,7 +16,7 @@ public class RegistrationTests {
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.holdBrowserOpen = true;
+//        Configuration.holdBrowserOpen = true;
         Configuration.timeout = 5000; // default 4000
     }
 
@@ -27,14 +27,14 @@ public class RegistrationTests {
         $("#lastName").setValue("Egorov");
         $("#userEmail").setValue("alex@egorov.com");
         $("#genterWrapper").$(byText("Other")).click();
-        $("#userNumber").setValue("+79227751265");
+        $("#userNumber").setValue("89227751265");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("January");
         $(".react-datepicker__year-select").selectOption("1990");
         $(".react-datepicker__day--020:not(.react-datepicker__day--outside-month)").click();
         $(".subjectsInput").setValue("Math").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
-        $("#uploadPicture").uploadFromClasspath("C:/Users/Lenovo user/Downloads/948f2396b347e7303af2cbddb95d.jpg");
+        $("#uploadPicture").uploadFromClasspath("5f660a673d5ee92d937babfe-1.jpg");
         $("#currentAddress").setValue("Some street 1");
         $("#state").click();
         $("stateCity-wrapper").$(byText("Uttar Pradesh")).click();
