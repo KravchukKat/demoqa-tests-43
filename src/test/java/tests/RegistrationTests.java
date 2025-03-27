@@ -26,7 +26,6 @@ public class RegistrationTests {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
-        File file = new File("src/test/resourses/cat.jpg");
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("Egorov");
         $("#userEmail").setValue("alex@egorov.com");
@@ -38,7 +37,7 @@ public class RegistrationTests {
         $(".react-datepicker__day--020:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue("Math").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
-        $("#uploadPicture").uploadFile(file);
+        $("#uploadPicture").uploadFromClasspath("cat.jpg");
         $("#currentAddress").setValue("Some street 1");
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("#react-select-4-input").setValue("Noida").pressEnter();
