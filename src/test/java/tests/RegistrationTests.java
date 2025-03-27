@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -14,16 +16,17 @@ public class RegistrationTests {
 
     @BeforeAll
     static void beforeAll() {
-//        Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-//        Configuration.holdBrowserOpen = true;
         Configuration.timeout = 5000; // default 4000
     }
 
     @Test
     void successfulRegistrationTest() {
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+        File file = new File("src/test/resourses/cat.jpg");
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("Egorov");
         $("#userEmail").setValue("alex@egorov.com");
@@ -35,16 +38,17 @@ public class RegistrationTests {
         $(".react-datepicker__day--020:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue("Math").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
-        $("#uploadPicture").uploadFromClasspath("cat.jpg");
+        $("#uploadPicture").uploadFile(file);
         $("#currentAddress").setValue("Some street 1");
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("#react-select-4-input").setValue("Noida").pressEnter();
         $("#submit").click();
 
-        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(exactText("Alex" + " " + "Egorov"));
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Alex Egorov"));
         $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("alex@egorov.com"));
         $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Other"));
-        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("89227751265"));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("8922775126"));
         $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("20 January,1990"));
         $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("Math"));
         $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Sports"));
