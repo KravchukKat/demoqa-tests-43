@@ -26,7 +26,7 @@ public class RegistrationTests {
         $("#lastName").setValue("Egorov");
         $("#userEmail").setValue("alex@egorov.com");
         $("#genterWrapper").$(byText("Other")).click();
-        $("#userNumber").setValue("89227751265");
+        $("#userNumber").setValue("8922775126");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("January");
         $(".react-datepicker__year-select").selectOption("1990");
@@ -39,11 +39,11 @@ public class RegistrationTests {
         $("#react-select-4-input").setValue("Noida").pressEnter();
         $("#submit").click();
 
-        $(".table-responsive").$(byText("Name")).parent().shouldHave(exactText("Alex" + " " + "Egorov"));
-        $(".table-responsive").$(byText("Email")).parent().shouldHave(text("alex@egorov.com"));
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(exactText("Alex" + " " + "Egorov"));
+        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("alex@egorov.com"));
         $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Other"));
         $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("89227751265"));
-        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("12 January,1990"));
+        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("20 January,1990"));
         $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("Math"));
         $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Sports"));
         $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("cat.jpg"));
